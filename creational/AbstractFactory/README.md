@@ -35,6 +35,6 @@ class CarFactory {
     }
 }
 ```
-In this example; `CarFactory` is the abstract feactory class that explain a return instance of other class, consider the class is returned is a element of family Car, i.e. `Boxter` class is a car.
+In this example; `CarFactory` is the abstract factory class that explain a return instance of other class, consider the class is returned is a element of family Car, i.e. `Boxter` class is a car.
 
 The method `createCar` choose in function of `model` the class to be instanced.
