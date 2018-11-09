@@ -31,7 +31,7 @@ It abstract the process of creation of a complex object, centralizing the proces
 
 - Director
     - Constructs products by using the Builder's multistep interface.
-- Builder <sub>_not used in JS_<sub>
+- Builder <sub>_not used in JS_</sub>
     - Declarates a multistep interface for creating a complex product.
 - ConcreteBuilder
     - Implements the multistep Builder interface.
