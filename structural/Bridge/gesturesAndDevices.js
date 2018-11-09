@@ -1,5 +1,7 @@
 'use strict';
 
+const log = require('../../util');
+
 // input devices
 
 class Gestures {
@@ -84,23 +86,6 @@ class Audio {
     }
 }
 
-// logging helper
-
-const logCreator = () => {
-    let log = "";
-
-    return {
-        add: msg => {
-            log += msg + "\n";
-        },
-        show: () => {
-            console.log(log);
-            log = "";
-        }
-    }
-};
-
-const log = logCreator();
 
 (() => {
     const screen = new Screen();

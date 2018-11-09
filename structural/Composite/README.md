@@ -15,7 +15,45 @@ Isn't there a better way?
 ## How to implement in JS
 
 ```js
+ class File {
+     constructor(name) {
+         this.name = name;
+     }
  
+     display() {
+         console.log(this.name);
+     }
+ }
+ 
+ class Directory {
+     constructor(name) {
+         this.name = name;
+         this.files = [];
+     }
+ 
+     add(file) {
+         this.files.push(file);
+     }
+ 
+     remove(file) {
+         for (const index in this.files) {
+             if (this.files[index] === file) {
+                 this.files.splice(index, 1);
+                 return true;
+             }
+         }
+         return false;
+     }
+ 
+     getFileName(index) {
+         return this.files[index].name;
+     }
+ 
+     display() {
+         console.log(this.name);
+         for (let i = 0, length = this.files.length; i < length; i++) {
+             console.log("   ", this.getFileName(i));
+         }
+     }
+ }
 ```
-
-See, the `screen` instance of `Screen` is using in `new Gestures(screen)` to translate the responsability (abstraction and implementation)
