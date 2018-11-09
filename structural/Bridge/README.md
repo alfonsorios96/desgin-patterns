@@ -11,6 +11,21 @@ Say, you have a geometric Shape class with a pair of subclasses: Circle and Squa
 ## How to implement in JS
 
 ```js
+ const screen = new Screen();
+    const audio = new Audio();
 
+    const hand = new Gestures(screen);
+    const mouse = new Mouse(audio);
+
+    hand.tap();
+    hand.swipe();
+    hand.pinch();
+
+    mouse.click();
+    mouse.move();
+    mouse.wheel();
+
+    log.show();
 ```
 
+See, the `screen` instance of `Screen` is using in `new Gestures(screen)` to translate the responsability (abstraction and implementation)
