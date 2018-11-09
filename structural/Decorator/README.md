@@ -12,6 +12,27 @@ Inheritance is the first solution that comes to mind when you need to extend cla
 ## How to implement in JS
 
 ```js
+ class User {
+     constructor(name) {
+         this.name = name;
+     }
  
+     say() {
+         log.add("User: " + this.name);
+     }
+ }
+ 
+ class DecoratedUser {
+     constructor(user, street, city) {
+         this.user = user;
+         this.name = user.name;  // ensures interface stays the same
+         this.street = street;
+         this.city = city;
+     }
+ 
+     say() {
+         log.add("Decorated User: " + this.name + ", " +
+             this.street + ", " + this.city);
+     }
+ }
 ```
-
