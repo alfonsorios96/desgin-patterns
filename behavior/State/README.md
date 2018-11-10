@@ -39,5 +39,21 @@ class Document
 ## How to implement in JS
 
 ```js
+class TrafficLight {
+    constructor() {
+        this.count = 0;
+        this.currentState = new Red(this);
+    }
 
+    change(state) {
+        // limits number of changes
+        if (this.count++ >= 10) return;
+        this.currentState = state;
+        this.currentState.go();
+    }
+
+    start() {
+        this.currentState.go();
+    }
+}
 ```
