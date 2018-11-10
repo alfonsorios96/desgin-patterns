@@ -16,5 +16,33 @@ Adding more and more traversal algorithms to the collection gradually blurs its 
 ## How to implement in JS
 
 ```js
+ class Iterator {
+     constructor(data) {
+         this.index = 0;
+         this.data = data;
+     }
  
+     next() {
+         let element;
+         if (!this.hasNext()) {
+             return null;
+         }
+         element = this.data[this.index];
+         this.index += 3;
+         return element;
+     }
+ 
+     hasNext() {
+         return this.index < this.data.length;
+     }
+ 
+     rewind() {
+         this.index = 0;
+         return this.data[this.index];
+     }
+ 
+     current() {
+         return this.data[this.index];
+     }
+ }
 ```
