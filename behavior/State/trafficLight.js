@@ -1,0 +1,59 @@
+'use strict';
+
+const log = require('../../util');
+
+class TrafficLight {
+    constructor() {
+        this.count = 0;
+        this.currentState = new Red(this);
+    }
+
+    change(state) {
+        // limits number of changes
+        if (this.count++ >= 10) return;
+        this.currentState = state;
+        this.currentState.go();
+    }
+
+    start() {
+        this.currentState.go();
+    }
+}
+
+class Red {
+    constructor(light) {
+        this.light = light;
+    }
+
+    go() {
+        log.add("Red --> for 1 minute");
+        this.light.change(new Green(this.light));
+    }
+}
+
+class Yellow {
+    constructor(light) {
+        this.light = light;
+    }
+
+    go() {
+        log.add("Yellow --> for 10 seconds");
+        this.light.change(new Red(this.light));
+    }
+}
+
+class Green {
+    constructor(light) {
+        this.light = light;
+    }
+
+    go() {
+        log.add("Green --> for 1 minute");
+        this.light.change(new Yellow(this.light));
+    }
+}
+
+const light = new TrafficLight();
+light.start();
+
+log.show();
