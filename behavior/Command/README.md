@@ -15,5 +15,11 @@ And here is the ugliest part. Some operations, like copying text, could be invok
 ## How to implement in JS
 
 ```js
- 
+ class Command {
+     constructor(execute, undo, value) {
+         this.execute = execute;
+         this.undo = undo;
+         this.value = value;
+     }
+ }
 ```
