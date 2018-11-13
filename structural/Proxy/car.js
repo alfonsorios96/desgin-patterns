@@ -6,13 +6,19 @@ class Car {
     };
 }
 
-class CarProxy {
+class ProxyCar {
     constructor(driver) {
         this.driver = driver;
     }
+
     drive() {
-        return  ( this.driver.age < 18) ? "too young to drive" : new Car().drive();
-    };
+        if (this.driver.age >= 18) {
+            const car = new Car();
+            return car.drive();
+        } else {
+            return 'You can not drive because too young yet';
+        }
+    }
 }
 
 class Driver {
@@ -22,5 +28,5 @@ class Driver {
 }
 
 
-const driver = new CarProxy(new Driver(10));
+const driver = new ProxyCar();
 console.log(driver.drive());

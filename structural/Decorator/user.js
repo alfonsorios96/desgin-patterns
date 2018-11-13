@@ -10,12 +10,15 @@ class User {
     say() {
         log.add("User: " + this.name);
     }
+
+    getName() {
+        return this.name;
+    }
 }
 
 class DecoratedUser {
     constructor(user, street, city) {
         this.user = user;
-        this.name = user.name;  // ensures interface stays the same
         this.street = street;
         this.city = city;
     }
@@ -23,6 +26,10 @@ class DecoratedUser {
     say() {
         log.add("Decorated User: " + this.name + ", " +
             this.street + ", " + this.city);
+    }
+
+    get name() {
+        return this.user.getName();
     }
 }
 
