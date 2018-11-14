@@ -1,7 +1,5 @@
 'use strict';
 
-const log = require('../../util');
-
 class Click {
     constructor() {
         this.handlers = [];
