@@ -31,40 +31,35 @@ const MulCommand = value => new Command(mul, div, value);
 
 const DivCommand = value => new Command(div, mul, value);
 
-const Calculator = () => {
-    let current = 0;
-    const commands = [];
+class Calculator {
+    constructor() {
+        this.current = 0;
+        this.commands = [];
+    }
 
-    const action = command => {
-        let name = command.execute.toString().substr(9, 3);
-        return name.charAt(0).toUpperCase() + name.slice(1);
-    };
+    execute(command) {
+        this.current = command.execute(this.current, command.value);
+        this.commands.push(command);
+    }
 
-    return {
-        execute: command => {
-            current = command.execute(current, command.value);
-            commands.push(command);
-            log.add(action(command) + ": " + command.value);
-        },
+    undo() {
+        let command = this.commands.pop();
+        this.current = command.undo(this.current, command.value);
+    }
 
-        undo: () => {
-            let command = commands.pop();
-            current = command.undo(current, command.value);
-            log.add("Undo " + action(command) + ": " + command.value);
-        },
-
-        getCurrentValue: () => current
-    };
-};
+    getCurrentValue() {
+        return this.current;
+    }
+}
 
 const calculator = new Calculator();
 
 // issue commands
 
-calculator.execute(new AddCommand(100));
-calculator.execute(new SubCommand(24));
-calculator.execute(new MulCommand(6));
-calculator.execute(new DivCommand(2));
+calculator.execute(AddCommand(100));
+calculator.execute(SubCommand(24));
+calculator.execute(MulCommand(6));
+calculator.execute(DivCommand(2));
 
 // reverse last two commands
 

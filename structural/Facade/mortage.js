@@ -34,7 +34,6 @@ class Credit {
     }
 }
 
-
 class Background {
     check(name) {
         // complex logic ...

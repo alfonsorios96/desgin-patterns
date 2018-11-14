@@ -13,6 +13,7 @@ class Iterator {
         }
         element = this.data[this.index];
         this.index += 3;
+
         return element;
     }
 
@@ -33,9 +34,10 @@ class Iterator {
 
 const iterator = new Iterator([1, 2, 3, 4, 5, 6]);
 
-for (const item of iterator) {
-    console.log(item.next());
-}
+console.log(iterator.next());
+console.log(iterator.next());
+console.log(iterator.next());
+
 
 iterator.rewind();
 console.log(iterator.current());
