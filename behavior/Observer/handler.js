@@ -16,7 +16,7 @@ class Click {
     }
 
     fire(o, thisObject) {
-        const scope = thisObject || window;
+        const scope = thisObject;
         for (const handler of this.handlers) {
             handler.call(scope, o);
         }
@@ -25,7 +25,7 @@ class Click {
 }
 
 const clickHandler = (item) => {
-    log.add("fired: " + item);
+    console.log("fired: " + item);
 };
 
 const click = new Click();

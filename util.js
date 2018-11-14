@@ -1,6 +1,6 @@
 // logging helper
 
-const logCreator = () => {
+const log = () => {
     let log = "";
 
     return {
@@ -14,4 +14,4 @@ const logCreator = () => {
     }
 };
 
-module.exports = logCreator();
+module.exports = log();
