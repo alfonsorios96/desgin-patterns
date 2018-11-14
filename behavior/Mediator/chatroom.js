@@ -19,11 +19,11 @@ class Participant {
 
 class Chatroom {
     constructor() {
-        this.participants = {};
+        this.participants = new Map();
     }
 
     register(participant) {
-        this.participants[participant.name] = participant;
+        this.participants.set(participant.name, participant);
         participant.chatroom = this;
     }
 
@@ -31,7 +31,7 @@ class Chatroom {
         if (to) {                      // single message
             to.receive(message, from);
         } else {                       // broadcast message
-            for (const participant of this.participants) {
+            for (const [name, participant] of this.participants) {
                 if (participant !== from) {
                     participant.receive(message, from);
                 }
